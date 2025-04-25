@@ -1,0 +1,8 @@
+streamlit
+openai
+pypdf
+pdf2image
+pillow
+colorthief
+requests
+python-dotenv
