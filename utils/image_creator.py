@@ -1,31 +1,33 @@
-import os
 from openai import OpenAI
+import os
 from dotenv import load_dotenv
 
-load_dotenv()  # Load .env file
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))  # ✅ Use from .env
+def generate_flyer_image(flyer_plan: str) -> str:
+    prompt = f"""
+    A flyer in digital graphic design announces a Virtual Employer Information Session.
+    Include the following:
+    - Title: "Virtual Employer Information Session"
+    - Subheading: "Learn more about employer"
+    - Date: April 25, 2025
+    - Time: 3PM - 4PM
+    - Location: ZoomCall
 
-
-def generate_flyer_image(flyer_plan_text):
-    improved_prompt = f"""
-    Create a high-resolution professional event flyer based on the following plan.
-
-    Make sure the flyer:
-    - Has clean, readable text
-    - Uses modern, branded fonts
-    - Includes a white background or light contrast background
-    - Places the provided Robinson College logo at the top
-    - Matches the layout and color guidelines below
-
-    Flyer Plan:
-    {flyer_plan_text}
+    Design style:
+    - Use a clean, modern layout
+    - Background color: GSU Blue (#0039A6)
+    - Text should be sharp and readable
+    - Include university-style visual branding
+    - Add room for logos and CTA
     """
 
     response = client.images.generate(
         model="dall-e-3",
-        prompt=improved_prompt,
+        prompt=prompt,
         size="1024x1024",
+        quality="standard",
         n=1
     )
 
