@@ -1,4 +1,4 @@
-# 🎨 Marketing Assistant App
+# 🎨 Marketing Assistant App - https://marketing-assistant-2025.streamlit.app/
 
 An AI-powered Streamlit web app that creates **branded marketing flyers** and **captions** in seconds.
 
